@@ -223,6 +223,7 @@ public:
             cout << arr.size() << " измерений: " << unit << msgfiltr.str() << endl
                  << setprecision(conf[PREC_VAL]) << "Min: " << scale * dmin << " Max: " << scale * dmax
                  << setprecision(conf[PREC_AVG]) << " Avg: " << scale * avg
+                 <<" K: " << k << " " << endl
                  << " СКО: " << scale * ksqdev << " СКО%: " << ksqdevPerc << endl;
             return *this;
         } else {

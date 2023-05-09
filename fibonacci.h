@@ -104,7 +104,7 @@ void countFibonacci() {
     Log log;
     int nPasses = 3;
 
-    printResults(log, 20, nPasses);
+    printResults(log, 25, nPasses);
 
     cout << endl << endl;
 

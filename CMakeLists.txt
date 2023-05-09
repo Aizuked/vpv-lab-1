@@ -3,6 +3,6 @@ project(untitled2)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(untitled2 main.cpp)
+add_executable(vpv-lab-1 main.cpp)
 
-target_compile_options(untitled2 INTERFACE -O0)
+target_compile_options(vpv-lab-1 INTERFACE -O0)

@@ -116,7 +116,7 @@ public:
 
         __cpuid(cpuid, 0);
         t_start = __rdtsc();
-        sum = calculateY(Ai, Bi, Xi, Yi);
+            sum = calculateY(Ai, Bi, Xi, Yi);
         __cpuid(cpuid, 0);
         t_finish = __rdtsc();
 
@@ -128,7 +128,8 @@ public:
 
 void performRepeatabilityMeasurements() {
     Log log;
-    int size = 5000;
+    int size = 100000;
+    int nsize = 25;
     int nPasses = 3;
 
     vector<double> Ai = vector<double>(size);
@@ -142,7 +143,7 @@ void performRepeatabilityMeasurements() {
     cout << "\nОценка повторяемости QPC\n";
     for (int n = 1; n <= nPasses; n++) {
         cout << "\nСерия " << n << ". ";
-        log.series(true, size, new MyFuncQPCMeter(size, Ai, Bi, Xi))
+        log.series(true, nsize, new MyFuncQPCMeter(size, Ai, Bi, Xi))
                 .calc().stat(MCS_IN_SEC, "микросекунды")
                 .print(MCS_IN_SEC, 10);
     }
@@ -150,7 +151,7 @@ void performRepeatabilityMeasurements() {
     cout << "\nОценка повторяемости CLOCK\n";
     for (int n = 1; n <= nPasses; n++) {
         cout << "\nСерия " << n << ". ";
-        log.series(true, size, new MyFuncClockMeter(size, Ai, Bi, Xi))
+        log.series(true, nsize, new MyFuncClockMeter(size, Ai, Bi, Xi))
                 .calc().stat(MCS_IN_SEC, "микросекунды")
                 .print(MCS_IN_SEC, 10);
     }
@@ -158,7 +159,7 @@ void performRepeatabilityMeasurements() {
     cout << "\nОценка повторяемости RDTSC+CLOCK\n";
     for (int n = 1; n <= nPasses; n++) {
         cout << "\nСерия " << n << ". ";
-        log.series(true, size, new MyFuncRDTSCWithClockMeter(size, Ai, Bi, Xi))
+        log.series(true, nsize, new MyFuncRDTSCWithClockMeter(size, Ai, Bi, Xi))
                 .calc().stat(MCS_IN_SEC, "микросекунды")
                 .print(MCS_IN_SEC, 10);
     }
